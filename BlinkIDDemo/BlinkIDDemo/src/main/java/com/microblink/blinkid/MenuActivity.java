@@ -81,6 +81,7 @@ import com.microblink.util.RecognizerCompatibility;
 import com.microblink.util.RecognizerCompatibilityStatus;
 import com.microblink.util.templating.CroatianIDBackSide;
 import com.microblink.util.templating.CroatianIDFrontSide;
+import com.microblink.util.templating.ArgentinaIDBackSide;
 import com.microblink.view.recognition.RecognitionType;
 
 import java.util.ArrayList;
@@ -291,8 +292,8 @@ public class MenuActivity extends Activity {
     private void buildElements() {
         ArrayList<ListElement> elements = new ArrayList<ListElement>();
 
-// ID document list entry
-        elements.add(buildMrtdElement());
+        // ID document list entry
+        /*elements.add(buildMrtdElement());
         elements.add(buildAustrianIDElement());
         elements.add(buildAustrianIDCombinedElement());
         elements.add(buildAustrianPassportElement());
@@ -318,15 +319,15 @@ public class MenuActivity extends Activity {
         elements.add(buildSlovenianIDElement());
         elements.add(buildSlovenianIDCombinedElement());
         elements.add(buildSwissIDElement());
-        elements.add(buildSwissPassportElement());
+        elements.add(buildSwissPassportElement());*/
 
         // DL list entries
-        elements.add(buildAustrianDLElement());
+        /*elements.add(buildAustrianDLElement());
         elements.add(buildAustralianDLElement());
         elements.add(buildGermanDLElement());
         elements.add(buildUKDLElement());
         elements.add(buildUsdlElement());
-        elements.add(buildUsdlCombinedElement());
+        elements.add(buildUsdlCombinedElement());*/
 
         // barcode list entries
 
@@ -336,11 +337,13 @@ public class MenuActivity extends Activity {
         elements.add(buildVin());
 
         // Blink OCR entries
-        elements.add(buildVehicleSegmentScanElement());
+        //elements.add(buildVehicleSegmentScanElement());
 
         // templating API entries
         elements.add(buildTemplatingAPICroIDFrontElement());
         elements.add(buildTemplatingAPICroIDBackElement());
+
+        elements.add(buildTemplatingAPIArgIDBackElement());
 
         mElements = new ListElement[elements.size()];
         elements.toArray(mElements);
@@ -638,6 +641,10 @@ public class MenuActivity extends Activity {
 
     private ListElement buildTemplatingAPICroIDBackElement() {
         return new ListElement("TemplatingAPI Cro ID Back", buildIntent(new RecognizerSettings[]{CroatianIDBackSide.buildCroatianIDBackSideRecognizerSettings()}, ScanCard.class, null));
+    }
+
+    private ListElement buildTemplatingAPIArgIDBackElement() {
+        return new ListElement("TemplatingAPI Arg ID Back", buildIntent(new RecognizerSettings[]{ArgentinaIDBackSide.buildArgentinaIDBackSideRecognizerSettings()}, ScanCard.class, null));
     }
 
     /**
